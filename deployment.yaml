@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: first-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: first-app
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: first-app
+        tier: backend
+    spec:
+      containers:
+        - name: first-app
+          image: gaiyadev/k8-revision:latest
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            periodSeconds: 10
+            initialDelaySeconds: 5
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
