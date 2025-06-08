@@ -1,6 +1,10 @@
 pipeline {
   agent any
 
+  tools {
+    nodejs 'node16' // Make sure 'node16' matches the name configured in "Global Tool Configuration"
+  }
+
   environment {
     NODE_ENV = 'development'
   }
