@@ -3,6 +3,7 @@ pipeline {
 
   tools {
     nodejs 'NodeJS'
+  }
 
   environment {
     NODE_ENV = 'development'
@@ -23,7 +24,6 @@ pipeline {
       }
     }
 
-   
     stage('Build') {
       steps {
         echo 'Building the app...'
