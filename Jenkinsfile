@@ -2,8 +2,7 @@ pipeline {
   agent any
 
   tools {
-    nodejs 'NodeJS' // Make sure 'node16' matches the name configured in "Global Tool Configuration"
-  }
+    nodejs 'NodeJS'
 
   environment {
     NODE_ENV = 'development'
@@ -24,19 +23,13 @@ pipeline {
       }
     }
 
-    stage('Run Tests') {
+   
+    stage('Build') {
       steps {
-        echo 'Running tests...'
-        sh 'npm test'
+        echo 'Building the app...'
+        sh 'npm run build'
       }
     }
-
-    // stage('Build') {
-    //   steps {
-    //     echo 'Building the app...'
-    //     sh 'npm run build'
-    //   }
-    // }
   }
 
   post {
